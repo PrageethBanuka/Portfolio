@@ -1,3 +1,11 @@
+window.addEventListener("load", function() {
+    // Hide loading overlay and show main content
+    this.setInterval(()=> {
+        document.getElementById("loading-overlay").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+    },5000)
+});
+
 function scrollToElement(elementSelector, instance = 0) {
     // Select all elements that match the given selector
     const elements = document.querySelectorAll(elementSelector);
