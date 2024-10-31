@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
   // Hide loading overlay and show main content
-  tdocument.getElementById("loading-overlay").style.display = "none";
+  document.getElementById("loading-overlay").style.display = "none";
   document.getElementById("main-content").style.display = "block";
 });
 
