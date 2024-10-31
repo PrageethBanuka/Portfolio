@@ -1,9 +1,7 @@
 window.addEventListener("load", function() {
     // Hide loading overlay and show main content
-    this.setInterval(()=> {
-        document.getElementById("loading-overlay").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-    },5000)
+    document.getElementById("loading-overlay").style.display = "none";
+    document.getElementById("content").style.display = "block";
 });
 
 function scrollToElement(elementSelector, instance = 0) {
