@@ -41,7 +41,6 @@ img {
   width: 100%;
   display: flex;
   mix-blend-mode: darken;
-  
 }
 .image {
   background-color: #fcfcfc;
@@ -74,7 +73,6 @@ nav {
 
 .nav-logo {
   max-width: 100px;
-  
 }
 .nav-logo img {
   mix-blend-mode: darken;
@@ -92,6 +90,7 @@ nav {
   position: relative;
   padding-bottom: 0.75rem;
   color: #fcfcfc;
+  mix-blend-mode: difference;
   opacity: 80%;
 }
 
@@ -178,7 +177,7 @@ header .image {
   margin-top: 50px;
   position: relative;
 }
-header .image::before {
+/* header .image::before {
   content: "B";
   position: absolute;
   top: 25%;
@@ -190,7 +189,7 @@ header .image::before {
   color: #1d4ed8;
   opacity: 0.2;
   z-index: -100;
-}
+} */
 
 header .image img {
   max-width: 600px;
@@ -259,6 +258,20 @@ section .header {
   margin: auto;
   text-align: center;
   color: #ccc;
+}
+.mySlides {
+  display: none;
+}
+.work-slideshow {
+  height: 80vh;
+  width: 100%;
+}
+.work-slideshow img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+  max-width: 500px;
 }
 
 .work {
@@ -353,8 +366,8 @@ section .header {
 footer {
   position: relative;
   display: grid;
-  grid-template-columns: 400px repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: 400px repeat(2, 1fr);
+  gap: 35rem;
 }
 
 footer .column .logo {
