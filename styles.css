@@ -367,7 +367,7 @@ footer {
   position: relative;
   display: grid;
   grid-template-columns: 400px repeat(2, 1fr);
-  gap: 35rem;
+  gap: 2rem;
 }
 
 footer .column .logo {

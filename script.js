@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   link4.addEventListener('click', (e) => {
       e.preventDefault();
-      scrollToElement('.column',3);
+      scrollToElement('.column',1);
   });
 });
 
