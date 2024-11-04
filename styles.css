@@ -353,6 +353,7 @@ section .header {
 }
 
 .pricing .card button {
+  width: 100%;
   color: #fff;
   background-color: transparent;
   border: 2px solid #fff;
