@@ -274,6 +274,7 @@ section .header {
   max-width: 500px;
 }
 
+
 .work {
   margin-bottom: 4rem;
 }
@@ -321,6 +322,7 @@ section .header {
 .pricing .card:hover {
   background-color: #323232;
   border-color: #fff;
+  /* scale: 101%; */
 }
 
 .pricing .card .content {
