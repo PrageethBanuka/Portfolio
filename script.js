@@ -1,14 +1,20 @@
-window.addEventListener("load", function () {
-  // Hide loading overlay and show main content when page loads
-  document.getElementById("loading-overlay").style.display = "none";
-  document.getElementById("content").style.display = "block";
-});
+// Set a maximum timeout to hide the loading overlay
+const timeoutDuration = 5000; // 5 seconds
+let timeout;
 
-// Set a time limit to hide the loading overlay automatically
-setTimeout(function () {
-  document.getElementById("loading-overlay").style.display = "none";
-  document.getElementById("content").style.display = "block";
-}, 5000); 
+// Function to hide the loading overlay
+function hideLoadingOverlay() {
+    document.getElementById("loading-overlay").style.display = "none";
+    document.getElementById("content").style.display = "block";
+    clearTimeout(timeout); // Clear the timeout if it’s still running
+}
+
+// Hide overlay when the page finishes loading
+window.addEventListener("load", hideLoadingOverlay);
+
+// Set a timeout to hide overlay after a maximum of 3 seconds
+timeout = setTimeout(hideLoadingOverlay, timeoutDuration);
+
 
 function scrollToElement(elementSelector, instance = 0) {
   // Select all elements that match the given selector
