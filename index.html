@@ -190,6 +190,26 @@
         </div>
       </div>
     </section>
+    <section id="contact" class="contact-section">
+      <h2 class="header">Contact Me</h2>
+      <p class="subheader">I'd love to hear from you! Send me a message below.</p>
+    <br>
+    <br>
+    <form id="contactForm" action="https://formspree.io/f/xnnqdzrl" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+  
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+  
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+  
+      <button class="btn" type="submit">Send Message</button>
+  </form>
+  <p id="formMessage" class="form-message"></p>
+    </section>
+    
     
 
     <footer class="container">
