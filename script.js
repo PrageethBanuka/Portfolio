@@ -1,8 +1,14 @@
 window.addEventListener("load", function () {
-  // Hide loading overlay and show main content
+  // Hide loading overlay and show main content when page loads
   document.getElementById("loading-overlay").style.display = "none";
   document.getElementById("content").style.display = "block";
 });
+
+// Set a time limit to hide the loading overlay automatically
+setTimeout(function () {
+  document.getElementById("loading-overlay").style.display = "none";
+  document.getElementById("content").style.display = "block";
+}, 5000); 
 
 function scrollToElement(elementSelector, instance = 0) {
   // Select all elements that match the given selector
