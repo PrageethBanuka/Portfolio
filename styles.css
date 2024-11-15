@@ -40,7 +40,8 @@ img {
 .image img {
   width: 100%;
   display: flex;
-  mix-blend-mode: darken;
+  mix-blend-mode: lighten;
+  
 }
 .image {
   background-color: #fcfcfc;
@@ -134,6 +135,13 @@ nav {
   max-width: 1200px;
   margin: auto;
   padding: 5rem 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .blur {
@@ -179,6 +187,8 @@ header .content p {
 header .image {
   margin-top: 50px;
   position: relative;
+  background-color: #181818;
+  
 }
 /* header .image::before {
   content: "B";
@@ -197,6 +207,7 @@ header .image {
 header .image img {
   max-width: 600px;
   margin: auto;
+  mix-blend-mode:darken;
 }
 
 section .header {

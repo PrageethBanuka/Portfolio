@@ -51,4 +51,24 @@
       }, index * 500); // Delay each skill by 500ms
     });
   });
+  document.addEventListener("DOMContentLoaded", function () {
+    const containers = document.querySelectorAll(".container");
+  
+    const fadeInContainer = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target); // Stop observing once visible
+        }
+      });
+    };
+  
+    const observer = new IntersectionObserver(fadeInContainer, {
+      threshold: 0.1, // Adjust the threshold as needed
+    });
+  
+    containers.forEach((container) => {
+      observer.observe(container);
+    });
+  });
   
