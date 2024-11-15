@@ -149,7 +149,8 @@ section .headerabout {
 }
 .logos img:hover {
   filter: grayscale(0%);
-  animation: float 2s ease-in-out infinite;
+  animation: float 0.5s ease-in-out ;
+  scale: 1.2;
   
 }
 @keyframes float {
