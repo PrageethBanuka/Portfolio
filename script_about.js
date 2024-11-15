@@ -17,21 +17,21 @@
   
     link1.addEventListener('click', (e) => {
         e.preventDefault();
-        scrollToElement('.headerabout');
+        scrollToElement('.container', 1);
     });
   
     link2.addEventListener('click', (e) => {
         e.preventDefault();
-        scrollToElement('.headerabout', 1);
+        scrollToElement('.container', 2);
     });
   
     link3.addEventListener('click', (e) => {
         e.preventDefault();
-        scrollToElement('.headerabout',2);
+        scrollToElement('.container',3);
     });
     link4.addEventListener('click', (e) => {
         e.preventDefault();
-        scrollToElement('.column',3);
+        scrollToElement('.container',4);
     });
   });
   
@@ -41,3 +41,14 @@
         elements[index].scrollIntoView({ behavior: 'smooth' });
     }
   }
+  document.addEventListener("DOMContentLoaded", () => {
+    const skills = document.querySelectorAll('.aboutlist li');
+    skills.forEach((skill, index) => {
+      skill.style.opacity = 0; // Start hidden
+      setTimeout(() => {
+        skill.style.opacity = 1; // Make visible
+        skill.style.transition = 'opacity 0.5s ease-in-out';
+      }, index * 500); // Delay each skill by 500ms
+    });
+  });
+  
