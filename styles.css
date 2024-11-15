@@ -464,6 +464,9 @@ footer .column > a {
 footer .column > a:hover {
   color: #1d4ed8;
 }
+footer p{
+  color: #fcfcfc;
+}
 
 @media (width < 900px) {
   .nav-links {

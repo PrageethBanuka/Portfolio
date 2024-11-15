@@ -223,7 +223,9 @@ footer .aboutcolumn a {
 footer .aboutcolumn > a:hover {
   color: #1d4ed8;
 }
-
+footer p{
+  color:#000000;
+}
 @media (width < 900px) {
   .nav-links {
     display: none;
