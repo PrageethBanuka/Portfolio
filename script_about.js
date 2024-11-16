@@ -136,3 +136,54 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial check
   toggleSideNav();
 });
+
+// Function to open the popup
+function openOtherPopup() {
+  const popup = document.getElementById("other-popup");
+  if (popup) {
+    popup.classList.add("visible");
+    popup.classList.remove("hidden");
+  }
+}
+
+// Function to close the popup
+function closeOtherPopup() {
+  const popup = document.getElementById("other-popup");
+  if (popup) {
+    popup.classList.remove("visible");
+    popup.classList.add("hidden");
+  }
+}
+
+// Attach event listener to the "Other" link in the mobile sidebar
+document.getElementById("mobile-other-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  openOtherPopup();
+});
+
+// Close button functionality
+document.querySelector(".close-btn").addEventListener("click", closeOtherPopup);
+
+// Function to open the popup
+function openOtherPopup() {
+  const popup = document.getElementById("other-popup");
+  if (popup) {
+    popup.classList.add("visible");
+    popup.classList.remove("hidden");
+  }
+}
+
+// Function to close the popup
+function closeOtherPopup() {
+  const popup = document.getElementById("other-popup");
+  if (popup) {
+    popup.classList.remove("visible");
+    popup.classList.add("hidden");
+  }
+}
+
+// Attach event listener to the "Other" link
+document.getElementById("link5").addEventListener("click", (e) => {
+  e.preventDefault();
+  openOtherPopup();
+});
