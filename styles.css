@@ -41,7 +41,6 @@ img {
   width: 100%;
   display: flex;
   mix-blend-mode: lighten;
-  
 }
 .image {
   background-color: #fcfcfc;
@@ -57,7 +56,7 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: #181818;
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
 
@@ -188,7 +187,6 @@ header .image {
   margin-top: 50px;
   position: relative;
   background-color: #181818;
-  
 }
 /* header .image::before {
   content: "B";
@@ -207,7 +205,7 @@ header .image {
 header .image img {
   max-width: 600px;
   margin: auto;
-  mix-blend-mode:darken;
+  mix-blend-mode: darken;
 }
 
 section .header {
@@ -404,7 +402,6 @@ form {
 
 label {
   margin-top: 10px;
-  
 }
 
 input,
@@ -416,7 +413,7 @@ textarea {
   border-radius: 5px;
   font-size: 1em;
   background-color: transparent;
-  color:#fcfcfc;
+  color: #fcfcfc;
 }
 
 footer .column .logo {
@@ -464,7 +461,7 @@ footer .column > a {
 footer .column > a:hover {
   color: #1d4ed8;
 }
-footer p{
+footer p {
   color: #fcfcfc;
 }
 
@@ -545,19 +542,7 @@ footer {
 }
 /* Side Navigation Styling */
 .side-nav {
-  padding: 10px;
-  background-color: transparent;
-  border-radius: 25px;
-  backdrop-filter: blur(20px);
-  position: fixed;
-  bottom: 10px; /* Position near the bottom of the viewport */
-  left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  z-index: 1000;
+  display: none;
 }
 
 /* Side Navigation - Hidden State */
@@ -627,29 +612,25 @@ footer {
 /* Responsive Styling */
 @media (max-width: 768px) {
   .side-nav {
-    display: flex;
-    left: 5px;
-  }
-  .nav-item {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    line-height: 40px;
-  }
-  .nav-item::after {
-    font-size: 0.75rem;
-    left: 50px;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .side-nav {
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    position: fixed;
+    bottom: 10px; /* Position near the bottom of the viewport */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
     display: flex;
     flex-direction: row;
-    top: unset;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
   }
   .nav-item {
     width: 40px;

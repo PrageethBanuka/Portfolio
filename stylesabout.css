@@ -145,25 +145,23 @@ section .headerabout {
   max-width: 80px;
   height: auto;
   filter: grayscale(100%); /* Makes the image black and white */
-  
 }
 .logos img:hover {
   filter: grayscale(0%);
-  animation: float 0.5s ease-in-out ;
+  animation: float 0.5s ease-in-out;
   scale: 1.2;
-  
 }
 @keyframes float {
   0% {
-      transform: translateY(0);
+    transform: translateY(0);
   }
 
   50% {
-      transform: translateY(-10px);
+    transform: translateY(-10px);
   }
 
   100% {
-      transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -223,8 +221,8 @@ footer .aboutcolumn a {
 footer .aboutcolumn > a:hover {
   color: #1d4ed8;
 }
-footer p{
-  color:#000000;
+footer p {
+  color: #000000;
 }
 @media (width < 900px) {
   .nav-links {
@@ -302,28 +300,12 @@ footer {
   }
   .logos img {
     max-width: 60px;
-    
-    
   }
 }
 
-
-
 /* Side Navigation Styling */
 .side-nav {
-  padding: 10px;
-  background-color: transparent;
-  border-radius: 25px;
-  backdrop-filter: blur(20px);
-  position: fixed;
-  bottom: 10px; /* Position near the bottom of the viewport */
-  left: 50%;
-  transform: translateX(-50%); /* Center horizontally */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-  z-index: 1000;
+  display: none;
 }
 
 /* Side Navigation - Hidden State */
@@ -339,7 +321,6 @@ footer {
   transform: translateY(0) translateX(-50%); /* In position */
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
 
 .nav-item {
   display: block;
@@ -394,8 +375,7 @@ footer {
 /* Responsive Styling */
 @media (max-width: 768px) {
   .side-nav {
-    display: flex;
-    left: 5px;
+    display: none;
   }
   .nav-item {
     width: 40px;
@@ -411,12 +391,19 @@ footer {
 
 @media (max-width: 480px) {
   .side-nav {
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 25px;
+    backdrop-filter: blur(20px);
+    position: fixed;
+    bottom: 10px; /* Position near the bottom of the viewport */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
     display: flex;
     flex-direction: row;
-    top: unset;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
   }
   .nav-item {
     width: 40px;
