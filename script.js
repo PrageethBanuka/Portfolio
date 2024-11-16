@@ -133,4 +133,51 @@ document
       observer.observe(container);
     });
   });
+  document.addEventListener("DOMContentLoaded", () => {
+    const navItems = document.querySelectorAll(".nav-item");
+    const sections = document.querySelectorAll("section");
   
+    const updateActiveNav = () => {
+      let index = sections.length;
+  
+      while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+  
+      navItems.forEach((navItem) => navItem.classList.remove("active"));
+      navItems[index].classList.add("active");
+    };
+  
+    // Smooth scrolling
+    navItems.forEach((item, idx) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        sections[idx].scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  
+    // On scroll, update active nav
+    window.addEventListener("scroll", updateActiveNav);
+    updateActiveNav();
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    const sideNav = document.querySelector(".side-nav");
+    const header = document.querySelector("header");
+  
+    const toggleSideNav = () => {
+      const headerBottom = header.getBoundingClientRect().bottom;
+  
+      if (headerBottom <= 0) {
+        sideNav.classList.remove("hidden");
+        sideNav.classList.add("visible");
+      } else {
+        sideNav.classList.remove("visible");
+        sideNav.classList.add("hidden");
+      }
+    };
+  
+    // Check on scroll
+    window.addEventListener("scroll", toggleSideNav);
+  
+    // Initial check
+    toggleSideNav();
+  });
+    
