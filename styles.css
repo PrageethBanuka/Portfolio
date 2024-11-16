@@ -550,14 +550,28 @@ footer {
   border-radius: 25px;
   backdrop-filter: blur(20px);
   position: fixed;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  display: none;
-  flex-direction: column;
+  bottom: 10px; /* Position near the bottom of the viewport */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 1rem;
   z-index: 1000;
+}
+
+/* Side Navigation - Hidden State */
+.side-nav.hidden {
+  opacity: 0;
+  transform: translateY(100%) translateX(-50%); /* Offscreen vertically */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Side Navigation - Visible State */
+.side-nav.visible {
+  opacity: 1;
+  transform: translateY(0) translateX(-50%); /* In position */
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .nav-item {
@@ -650,15 +664,15 @@ footer {
   }
 }
 /* Side Navigation - Hidden State */
-.side-nav.hidden {
+/* .side-nav.hidden {
   opacity: 0;
   transform: translateY(100%) translateX(50%);
   transition: opacity 0.5s ease, transform 0.5s ease;
-}
+} */
 
 /* Side Navigation - Visible State */
-.side-nav.visible {
+/* .side-nav.visible {
   opacity: 1;
   transform: translateY(0%) translateX(100);
   transition: opacity 0.5s ease, transform 0.5s ease;
-}
+} */
