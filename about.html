@@ -40,17 +40,36 @@
         <li id = "link1" class="link"><a href="" herf="#">Engineering</a></li>
         <li id = "link2" class="link"><a href="" herf="#">Graphic Designing</a></li>
         <li id = "link3" class="link"><a href="" herf="#">Video Editing</a></li>
-        <li id = "link5" class="link"><a href="" herf="#">Other</a></li>
+        <li id = "link5" class="link"><a href="" herf="#">Other✨</a></li>
         <li id = "link4" class="link"><a href="" herf="#">Contact</a></li>
       </ul>
 
       <button class="btn">Hire Me</button>
     </nav>
+    <!-- Popup for "Other" -->
+<div id="other-popup" class="popup hidden">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closeOtherPopup()">&times;</span>
+    <div class="popup-sections">
+      <div id="music" class="popup-section">
+        <h1>🎵 Music</h1>
+        <p>Music is more than just a passion—it’s a part of who I am. From the soulful melodies of the 🎷clarinet to the rhythmic beats of the 🥁drums, music fuels my creativity and focus. Whether performing on stage or listening to inspiring tunes during late-night design sessions, it shapes my journey and brings balance to my life..</p>
+        <!-- <img src="images/IMG_4130.JPG" alt=""> -->
+      </div>
+      <div id="astro" class="popup-section">
+        <h1>🔭 Astronomy</h1>
+        <p>The stars have always been my window to wonder. Stargazing with my telescope has taught me the art of patience and the beauty of infinite possibilities. Astronomy isn’t just about exploring the universe—it’s a reminder that every tiny dot in the night sky holds a story, much like every person we meet and every step we take.</p>
+        <!-- <img src="images/moon 2.jpg" alt=""> -->
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="side-nav">
       <a  href="#section1" class="nav-item" data-section="Engineering">⚙️</a>
       <a  href="#section2" class="nav-item" data-section="Graphic Designing">🎨</a>
       <a  href="#section3" class="nav-item" data-section="Video Editing">🎥</a>
-      <a  href="#section4" class="nav-item" data-section="Other">⭐</a>
+      <a href="#" id="mobile-other-link" class="nav-item" data-section="Other"><img src="images/icons/output-onlinegiftools.gif" alt=""></a>
     </div>
 
     <header class="container">
