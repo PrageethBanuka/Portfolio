@@ -543,3 +543,122 @@ footer {
     padding: 1rem 0;
   }
 }
+/* Side Navigation Styling */
+.side-nav {
+  padding: 10px;
+  background-color: transparent;
+  border-radius: 25px;
+  backdrop-filter: blur(20px);
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;
+}
+
+.nav-item {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #181818;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  background-color: #1d4ed8;
+  color: #fff;
+  transform: scale(1.2);
+}
+
+/* Tooltip Effect */
+.nav-item::after {
+  content: attr(data-section);
+  position: absolute;
+  left: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: #181818;
+  padding: 5px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.nav-item:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(10px);
+}
+
+/* Highlight Active Section */
+.nav-item.active {
+  background-color: #1d4ed8;
+  transform: scale(1.2);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .side-nav {
+    display: flex;
+    left: 5px;
+  }
+  .nav-item {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    line-height: 40px;
+  }
+  .nav-item::after {
+    font-size: 0.75rem;
+    left: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .side-nav {
+    display: flex;
+    flex-direction: row;
+    top: unset;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-item {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    line-height: 40px;
+  }
+  .nav-item::after {
+    left: 0;
+    top: -30px;
+    transform: translateX(-50%);
+  }
+}
+/* Side Navigation - Hidden State */
+.side-nav.hidden {
+  opacity: 0;
+  transform: translateY(100%) translateX(50%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Side Navigation - Visible State */
+.side-nav.visible {
+  opacity: 1;
+  transform: translateY(0%) translateX(100);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
