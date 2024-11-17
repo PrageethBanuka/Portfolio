@@ -529,3 +529,18 @@ footer {
     transform: translateY(0);
   }
 }
+
+.clarinet{
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  width: 80px;
+  
+}
+.drums{
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  width: 80px;
+  
+}
