@@ -4,9 +4,9 @@ let timeout;
 
 // Function to hide the loading overlay
 function hideLoadingOverlay() {
-    document.getElementById("loading-overlay").style.display = "none";
-    document.getElementById("content").style.display = "block";
-    clearTimeout(timeout); // Clear the timeout if it’s still running
+  document.getElementById("loading-overlay").style.display = "none";
+  document.getElementById("content").style.display = "block";
+  clearTimeout(timeout); // Clear the timeout if it’s still running
 }
 
 // Hide overlay when the page finishes loading
@@ -14,7 +14,6 @@ window.addEventListener("load", hideLoadingOverlay);
 
 // Set a timeout to hide overlay after a maximum of 3 seconds
 timeout = setTimeout(hideLoadingOverlay, timeoutDuration);
-
 
 function scrollToElement(elementSelector, instance = 0) {
   // Select all elements that match the given selector
@@ -113,71 +112,117 @@ document
         document.getElementById("formMessage").style.color = "red";
       });
   });
-  document.addEventListener("DOMContentLoaded", function () {
-    const containers = document.querySelectorAll(".container");
-  
-    const fadeInContainer = (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target); // Stop observing once visible
-        }
-      });
-    };
-  
-    const observer = new IntersectionObserver(fadeInContainer, {
-      threshold: 0.1, // Adjust the threshold as needed
-    });
-  
-    containers.forEach((container) => {
-      observer.observe(container);
-    });
-  });
-  document.addEventListener("DOMContentLoaded", () => {
-    const navItems = document.querySelectorAll(".nav-item");
-    const sections = document.querySelectorAll("section");
-  
-    const updateActiveNav = () => {
-      let index = sections.length;
-  
-      while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
-  
-      navItems.forEach((navItem) => navItem.classList.remove("active"));
-      navItems[index].classList.add("active");
-    };
-  
-    // Smooth scrolling
-    navItems.forEach((item, idx) => {
-      item.addEventListener("click", (e) => {
-        e.preventDefault();
-        sections[idx].scrollIntoView({ behavior: "smooth" });
-      });
-    });
-  
-    // On scroll, update active nav
-    window.addEventListener("scroll", updateActiveNav);
-    updateActiveNav();
-  });
-  document.addEventListener("DOMContentLoaded", () => {
-    const sideNav = document.querySelector(".side-nav");
-    const header = document.querySelector("header");
-  
-    const toggleSideNav = () => {
-      const headerBottom = header.getBoundingClientRect().bottom;
-  
-      if (headerBottom <= 0) {
-        sideNav.classList.remove("hidden");
-        sideNav.classList.add("visible");
-      } else {
-        sideNav.classList.remove("visible");
-        sideNav.classList.add("hidden");
+document.addEventListener("DOMContentLoaded", function () {
+  const containers = document.querySelectorAll(".container");
+
+  const fadeInContainer = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // Stop observing once visible
       }
-    };
-  
-    // Check on scroll
-    window.addEventListener("scroll", toggleSideNav);
-  
-    // Initial check
-    toggleSideNav();
+    });
+  };
+
+  const observer = new IntersectionObserver(fadeInContainer, {
+    threshold: 0.1, // Adjust the threshold as needed
   });
-    
+
+  containers.forEach((container) => {
+    observer.observe(container);
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const navItems = document.querySelectorAll(".nav-item");
+  const sections = document.querySelectorAll("section");
+
+  const updateActiveNav = () => {
+    let index = sections.length;
+
+    while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+    navItems.forEach((navItem) => navItem.classList.remove("active"));
+    navItems[index].classList.add("active");
+  };
+
+  // Smooth scrolling
+  navItems.forEach((item, idx) => {
+    item.addEventListener("click", (e) => {
+      e.preventDefault();
+      sections[idx].scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  // On scroll, update active nav
+  window.addEventListener("scroll", updateActiveNav);
+  updateActiveNav();
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const sideNav = document.querySelector(".side-nav");
+  const header = document.querySelector("header");
+
+  const toggleSideNav = () => {
+    const headerBottom = header.getBoundingClientRect().bottom;
+
+    if (headerBottom <= 0) {
+      sideNav.classList.remove("hidden");
+      sideNav.classList.add("visible");
+    } else {
+      sideNav.classList.remove("visible");
+      sideNav.classList.add("hidden");
+    }
+  };
+
+  // Check on scroll
+  window.addEventListener("scroll", toggleSideNav);
+
+  // Initial check
+  toggleSideNav();
+});
+
+// Include CryptoJS for encryption and decryption
+// Add this <script> to your HTML head if CryptoJS is not already included:
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
+
+    // Replace with your crush's email and encrypted key
+    const crushEmail = "crush@example.com"; 
+    const encryptedKey =
+      "U2FsdGVkX18yk0SqtwSjovAEfY8Q4z5J93CAlkNrWMdSE7BzA4wTo7gk7LQIWMjFsnN8KWj8aIeSOXdymGh1kw=="; // Replace with your encrypted key
+    const passphrase = "Ruhuna@2002&2003"; // Replace with the passphrase used to encrypt
+
+    if (email === crushEmail) {
+      // Decrypt the key
+      const decryptedKey = CryptoJS.AES.decrypt(
+        encryptedKey,
+        passphrase
+      ).toString(CryptoJS.enc.Utf8);
+
+      // Show success message
+      const formMessage = document.getElementById("formMessage");
+      formMessage.textContent = `Thank you, ${name}! Your message has been sent.`;
+      formMessage.style.color = "green";
+
+      // Display the decrypted secret key
+      const secretKeyDisplay = document.getElementById("secretKeyDisplay");
+      secretKeyDisplay.textContent = `Your secret key is: ${decryptedKey} \nTry to De64de it`;
+      secretKeyDisplay.style.display = "block";
+
+      // Clear the form
+      document.getElementById("contactForm").reset();
+    } else {
+      // Show error message for invalid email
+      const formMessage = document.getElementById("formMessage");
+      formMessage.textContent =
+        "Invalid email. Only special people can receive the key!";
+      formMessage.style.color = "red";
+    }
+  });
