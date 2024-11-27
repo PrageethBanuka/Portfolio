@@ -657,3 +657,9 @@ footer {
   transform: translateY(0%) translateX(100);
   transition: opacity 0.5s ease, transform 0.5s ease;
 } */
+#secretKeyDisplay {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #1d4ed8; /* Highlight the secret key */
+  font-weight: bold;
+}
