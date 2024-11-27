@@ -194,7 +194,7 @@ document
     const message = document.getElementById("message").value;
 
     // Replace with your crush's email and encrypted key
-    const crushEmail = "crush@example.com"; 
+    const crushEmail = "nethminiherath.hm@gmail.com"; 
     const encryptedKey =
       "U2FsdGVkX18yk0SqtwSjovAEfY8Q4z5J93CAlkNrWMdSE7BzA4wTo7gk7LQIWMjFsnN8KWj8aIeSOXdymGh1kw=="; // Replace with your encrypted key
     const passphrase = "Ruhuna@2002&2003"; // Replace with the passphrase used to encrypt
