@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const link2 = document.getElementById("link2");
   const link3 = document.getElementById("link3");
   const link4 = document.getElementById("link4");
+  const link6 = document.getElementById("link6");
 
   link1.addEventListener("click", (e) => {
     e.preventDefault();
@@ -48,6 +49,10 @@ document.addEventListener("DOMContentLoaded", () => {
   link4.addEventListener("click", (e) => {
     e.preventDefault();
     scrollToElement(".container", 4);
+  });
+  link6.addEventListener("click", (e) => {
+    e.preventDefault();
+    scrollToElement(".container", 5);
   });
 });
 
@@ -187,3 +192,5 @@ document.getElementById("link5").addEventListener("click", (e) => {
   e.preventDefault();
   openOtherPopup();
 });
+
+
