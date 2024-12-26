@@ -748,3 +748,22 @@ footer {
   font-weight: bold;
   font-size: 1.5rem;
 }
+
+@media (max-width: 480px) {
+  countdown-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  #countdown {
+    font-size: 1.0rem;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  #countdown span {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+}
