@@ -663,3 +663,88 @@ footer {
   color: #1d4ed8; /* Highlight the secret key */
   font-weight: bold;
 }
+
+/* Snow Effect */
+
+
+
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000; /* Ensure it overlays all other elements */
+  pointer-events: none; /* Allow clicks and interactions with underlying content */
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes diagonal-fall {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.25;
+    transform: translate(10vw, 100vh);
+  }
+}
+
+.countdown-container {
+  position: fixed;
+  top: 140%;
+  left: 50%;
+  /* width: 100%; */
+  transform: translate(-50%, -50%);
+  z-index: 1001; 
+  background-color: rgba(0, 0, 0, 0.7); 
+  backdrop-filter: blur(10px);
+  color: #fcfcfc;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  
+}
+
+#countdown-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+#countdown {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+#countdown span {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
