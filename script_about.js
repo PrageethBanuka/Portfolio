@@ -194,3 +194,74 @@ document.getElementById("link5").addEventListener("click", (e) => {
 });
 
 
+//Snow effect
+
+document.addEventListener("DOMContentLoaded", function () {
+  const snowContainer = document.querySelector(".snow-container");
+
+  const particlesPerThousandPixels = 0.1; // Snow density
+  const fallSpeed = 1.25;
+  const maxSnowflakes = 200; // Maximum snowflakes
+  const snowflakes = [];
+
+  let snowflakeInterval;
+
+  function resetSnowflake(snowflake) {
+    const size = Math.random() * 5 + 1;
+    const viewportWidth = window.innerWidth - size;
+    const viewportHeight = window.innerHeight;
+
+    snowflake.style.width = `${size}px`;
+    snowflake.style.height = `${size}px`;
+    snowflake.style.left = `${Math.random() * viewportWidth}px`;
+    snowflake.style.top = `-${size}px`;
+
+    const animationDuration = (Math.random() * 3 + 2) / fallSpeed;
+    snowflake.style.animationDuration = `${animationDuration}s`;
+    snowflake.style.animationTimingFunction = "linear";
+    snowflake.style.animationName =
+      Math.random() < 0.5 ? "fall" : "diagonal-fall";
+
+    setTimeout(() => {
+      if (parseInt(snowflake.style.top, 10) < viewportHeight) {
+        resetSnowflake(snowflake);
+      } else {
+        snowflake.remove();
+        snowflakes.splice(snowflakes.indexOf(snowflake), 1); // Remove from array
+      }
+    }, animationDuration * 1000);
+  }
+
+  function createSnowflake() {
+    if (snowflakes.length < maxSnowflakes) {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflakes.push(snowflake);
+      snowContainer.appendChild(snowflake);
+      resetSnowflake(snowflake);
+    }
+  }
+
+  function generateSnowflakes() {
+    const numberOfParticles =
+      Math.ceil((window.innerWidth * window.innerHeight) / 1000) *
+      particlesPerThousandPixels;
+    const interval = 5000 / numberOfParticles;
+
+    clearInterval(snowflakeInterval);
+    snowflakeInterval = setInterval(() => {
+      if (snowflakes.length < maxSnowflakes) {
+        createSnowflake();
+      }
+    }, interval);
+  }
+
+  generateSnowflakes();
+
+  window.addEventListener("resize", () => {
+    clearInterval(snowflakeInterval);
+    generateSnowflakes();
+  });
+});
+
+
