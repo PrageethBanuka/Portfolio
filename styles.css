@@ -764,6 +764,7 @@ footer {
   }
 }
 .newYearBanner {
+  text-align: center;
   position: fixed;
   top: 140%;
   left: 50%;
