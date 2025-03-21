@@ -741,9 +741,14 @@ footer {
     transform: translateX(-50%);
   }
   .chat-container{
-    display: none;
+    /* display: none; */
+    margin-bottom: 55px;
     
     
+  
+  }
+  .container .socials{
+    margin-top: 50px;
   }
 }
 /* Side Navigation - Hidden State */
