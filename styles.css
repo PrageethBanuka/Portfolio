@@ -66,7 +66,8 @@ html {
 
 /* User Messages */
 .user-message {
-  background-color: #a9f5d9;
+  background-color: #5555;
+  color: #6f89d3;
   text-align: right;
 }
 
@@ -112,7 +113,7 @@ img {
 .image img {
   width: 100%;
   display: flex;
-  mix-blend-mode: lighten;
+  mix-blend-mode: darken;
 }
 .image {
   background-color: #fcfcfc;
@@ -283,6 +284,7 @@ header .image {
   margin-top: 50px;
   position: relative;
   background-color: #181818;
+  border-radius: 35%;
 }
 /* header .image::before {
   content: "B";
@@ -301,7 +303,8 @@ header .image {
 header .image img {
   max-width: 600px;
   margin: auto;
-  mix-blend-mode: darken;
+  mix-blend-mode:overlay;
+  border-radius: 35%;
 }
 
 section .header {
@@ -590,6 +593,12 @@ footer p {
   /* footer {
     grid-template-columns: 1fr 200px;
   } */
+   .chat-box{
+    display: none;
+   }
+   .chat-container{
+    display: none;
+   }
 }
 @media (width < 600px) {
   header .image::before {
