@@ -30,7 +30,18 @@
       <img src="images/my_logo.gif" alt="Loading animation">
   </div>
   <!-- <div class="snow-container"></div> -->
-
+  <!-- AI Chat Container -->
+<div class="chat-container">
+  <div class="chat-box" id="chat-box">
+      <div class="chat-message bot-message">
+          <p>Hi! How can I help you today?</p>
+      </div>
+  </div>
+  <div class="chat-input-container">
+      <input type="text" id="user-input" placeholder="Type your message..." />
+      <button id="send-button">Send</button>
+  </div>
+</div>
     <nav>
       <div class="nav-logo">
         <a href="./index.html">
@@ -54,9 +65,9 @@
           <span id="minutes"></span> Minutes
           <span id="seconds"></span> Seconds
         </div> -->
-        <div class="newYearBanner">
+        <!-- <div class="newYearBanner">
           <h1>✨ Happy New Year 2025 🎉</h1>
-        </div>
+        </div> -->
       </div>
 
       <button class="btn"> <a href="mailto:pbrdesignsstudio@gmail.com?subject=Creative Services Inquiry&body=Contents of email" >Hire Me</a></button>
@@ -74,13 +85,31 @@
         <span class="blur"></span>
         <span class="blur"></span>
         <h4>☕️ coffee runs through my circuits</h4>
-        <h1>Hi, I'm <span>Banuka</span>, Engineer and Creative Designer</h1>
+        <h1>Hi, I'm <span>Banuka </span>,<br><span id="element"></span></h1>
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+        <script>
+          var typed = new Typed('#element', {
+            strings: ['🎓 Engineering Student', '✨ Creative Designer', '🧑🏻‍💻 Web Designer', '🔭 Star Gazer', '🎵 Music Lover'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+          });
+        </script>
         <p>
             I am an engineering student with a passion for design. I specialize in graphic design and video editing, creating compelling visuals that tell your story.
         </p>
+        
 
         <a href="about.html"><button class="btn" >About Me</button></a>
+        <div class="socials">
+          <a href="https://www.behance.net/banuka_designs" target="_blank"><i class="ri-behance-line"></i></a>
+          <a href="http://www.linkedin.com/in/banuka-rajapaksha" target="_blank"><i class="ri-linkedin-line"></i></a>
+          <a href="https://www.instagram.com/prageeth_banuka/"target="_blank"><i class="ri-instagram-line"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=100087502321922&mibextid=kFxxJD"target="_blank"><i class="ri-facebook-line"></i></a>
+          
+        </div>
       </div>
+      
       <div class="image">
         <img src="images/Subject.png" alt="" />
       </div>
