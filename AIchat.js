@@ -1,3 +1,21 @@
+// Chat toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const chatToggleBtn = document.getElementById('chat-toggle-btn');
+    const chatContainer = document.querySelector('.chat-container');
+    
+    chatToggleBtn.addEventListener('click', function() {
+        if (chatContainer.style.display === 'none') {
+            chatContainer.style.display = 'block';
+            chatContainer.style.animation = 'slideIn 0.3s ease forwards';
+        } else {
+            chatContainer.style.animation = 'slideOut 0.3s ease forwards';
+            setTimeout(() => {
+                chatContainer.style.display = 'none';
+            }, 300);
+        }
+    });
+});
+
 // Handle sending and receiving messages
 document.getElementById("send-button").addEventListener("click", function () {
   const userInput = document.getElementById("user-input").value;
@@ -56,7 +74,7 @@ function getBotResponse(userMessage) {
   ) {
     return "I specialize in graphic design, video editing, and web design. What kind of design are you interested in?";
   } else if (message.includes("video")) {
-    return "I love working with video editing! Whether it's promotional content or personal videos, I’m here to help bring your vision to life!";
+    return "I love working with video editing! Whether it's promotional content or personal videos, I'm here to help bring your vision to life!";
   } else if (message.includes("web design") || message.includes("website")) {
     return "Web design is a true passion of mine. Let me know if you'd like to discuss creating a sleek and modern website!";
   } else if (message.includes("help")) {
