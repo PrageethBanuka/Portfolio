@@ -29,7 +29,7 @@ html {
 /* Chat Container */
 .chat-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 60px;
   right: 20px;
   width: 300px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -913,5 +913,52 @@ footer {
   }
   100% {
     transform: translateX(100%);
+  }
+}
+
+.chat-toggle-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1e40d8;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.chat-toggle-btn:hover {
+  transform: scale(1.1);
+  background-color: #1e40af;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }
