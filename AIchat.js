@@ -1,56 +1,131 @@
 // Chat toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const chatToggleBtn = document.getElementById('chat-toggle-btn');
-    const chatContainer = document.querySelector('.chat-container');
-    
+  const chatToggleBtn = document.getElementById('chat-toggle-btn');
+  const chatContainer = document.querySelector('.chat-container');
+
+  if (chatToggleBtn && chatContainer) {
+    chatContainer.style.display = chatContainer.style.display || 'none';
     chatToggleBtn.addEventListener('click', function() {
-        if (chatContainer.style.display === 'none') {
-            chatContainer.style.display = 'block';
-            chatContainer.style.animation = 'slideIn 0.3s ease forwards';
-        } else {
-            chatContainer.style.animation = 'slideOut 0.3s ease forwards';
-            setTimeout(() => {
-                chatContainer.style.display = 'none';
-            }, 300);
-        }
+      if (chatContainer.style.display === 'none') {
+        chatContainer.style.display = 'block';
+        chatContainer.style.animation = 'slideIn 0.3s ease forwards';
+      } else {
+        chatContainer.style.animation = 'slideOut 0.3s ease forwards';
+        setTimeout(() => {
+          chatContainer.style.display = 'none';
+        }, 300);
+      }
     });
+  }
 });
 
 // Handle sending and receiving messages
-document.getElementById("send-button").addEventListener("click", function () {
-  const userInput = document.getElementById("user-input").value;
-  if (userInput.trim() === "") return; // Prevent sending empty messages
+const sendBtnEl = document.getElementById("send-button");
+const userInputEl = document.getElementById("user-input");
 
-  // Add user message to chat box
-  addMessage(userInput, "user-message");
+if (sendBtnEl && userInputEl) {
+  const sendMessage = async () => {
+    const userInput = userInputEl.value;
+    if (userInput.trim() === "") return; // Prevent sending empty messages
 
-  // Clear input field
-  document.getElementById("user-input").value = "";
+    // Add user message to chat box
+    addMessage(userInput, "user-message");
 
-  // Simulate a bot response after a short delay
-  setTimeout(() => {
-    const botResponse = getBotResponse(userInput); // Mocking AI response
-    addMessage(botResponse, "bot-message");
-  }, 1000);
-});
+    // Clear input field and disable button while processing
+    userInputEl.value = "";
+    sendBtnEl.disabled = true;
+
+    // Show typing indicator
+    const typingId = addTypingIndicator();
+
+    try {
+      const botResponse = await getBotResponse(userInput);
+      removeTypingIndicator(typingId);
+      addMessage(botResponse, "bot-message");
+    } catch (err) {
+      removeTypingIndicator(typingId);
+      addMessage("Sorry, I had trouble responding just now. Please try again.", "bot-message");
+      // Log error for diagnostics (visible only in dev tools)
+      console.error('[Chat] sendMessage failed:', err);
+    } finally {
+      sendBtnEl.disabled = false;
+    }
+  };
+
+  sendBtnEl.addEventListener("click", sendMessage);
+  // Enter-to-send
+  userInputEl.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+}
 
 // Function to add message to chat box
 function addMessage(message, sender) {
   const chatBox = document.getElementById("chat-box");
+  if (!chatBox) return;
   const messageElement = document.createElement("div");
   messageElement.classList.add("chat-message", sender);
-  messageElement.innerHTML = `<p>${message}</p>`;
+  const p = document.createElement("p");
+  p.textContent = message; // safer than innerHTML
+  messageElement.appendChild(p);
   chatBox.appendChild(messageElement);
 
   // Scroll to the latest message
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Mock AI response (you can replace this with actual AI API like Dialogflow or OpenAI)
-function getBotResponse(userMessage) {
-  // Convert user message to lowercase for case-insensitive comparison
-  const message = userMessage.toLowerCase();
+// Typing indicator helpers
+function addTypingIndicator() {
+  const chatBox = document.getElementById("chat-box");
+  if (!chatBox) return null;
+  const id = `typing-${Date.now()}`;
+  const indicator = document.createElement("div");
+  indicator.classList.add("chat-message", "bot-message", "typing");
+  indicator.dataset.id = id;
+  const p = document.createElement("p");
+  p.textContent = "Typing…";
+  indicator.appendChild(p);
+  chatBox.appendChild(indicator);
+  chatBox.scrollTop = chatBox.scrollHeight;
+  return id;
+}
 
+function removeTypingIndicator(id) {
+  if (!id) return;
+  const chatBox = document.getElementById("chat-box");
+  if (!chatBox) return;
+  const el = chatBox.querySelector(`[data-id="${id}"]`);
+  if (el) chatBox.removeChild(el);
+}
+
+// Mock AI response (you can replace this with actual AI API like Dialogflow or OpenAI)
+async function getBotResponse(userMessage) {
+  // Try calling a hosted AI function first (works with GitHub Pages if you host the API elsewhere)
+  // Configure an absolute URL via window.CHAT_API_URL (e.g., https://your-func-host/api/chat)
+  const apiUrl = (typeof window !== 'undefined' && window.CHAT_API_URL) || '/api/chat';
+
+  try {
+    if (apiUrl) {
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.reply) return data.reply;
+      }
+    }
+  } catch (e) {
+    // Network or CORS failure – fall back to local rules
+    console.warn('[Chat] API call failed, using fallback:', e);
+  }
+
+  // Fallback: simple rule-based replies (works entirely on the client)
+  const message = (userMessage || '').toLowerCase();
   if (
     message.includes("hi") ||
     message.includes("hello") ||
@@ -64,9 +139,9 @@ function getBotResponse(userMessage) {
     message.includes("unlock") ||
     message.includes("hint") ||
     message.includes("flag") ||
-    messege.include("hidden")
+    message.includes("hidden")
   ) {
-    return "🔐 You've unlocked a secret message! Check the contact form ,Just fill in the details, and the mystery will unfold… 🌟";
+    return "🔐 You've unlocked a secret message! Check the contact form. Just fill in the details, and the mystery will unfold… 🌟";
   } else if (
     message.includes("design") ||
     message.includes("graphic") ||
@@ -83,8 +158,6 @@ function getBotResponse(userMessage) {
     return "You're welcome! 😄 Let me know if you need any more information!";
   } else if (message.includes("contact")) {
     return "You can contact me via email at pbrdesignsstudio@gmail.com. I'll be happy to discuss any projects with you!";
-  } else if (message.includes("hello") || message.includes("hi")) {
-    return "Hi again! 😎 I'm here to help, just type away!";
   } else {
     return "I'm not sure how to respond to that, but feel free to ask me anything about design, video editing, or my portfolio!";
   }
