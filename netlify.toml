@@ -1,0 +1,9 @@
+[build]
+  command = ""
+  publish = "."
+
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+  force = true
