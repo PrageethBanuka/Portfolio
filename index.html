@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fira+Code&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/My-Logo.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
@@ -307,11 +308,16 @@
       <p>© Created by Banuka Rajapaksha</p>
     </footer>
 
+    <script>
+      // Force holiday features: set to true/false or leave undefined for auto window (Nov 25–Jan 5)
+      globalThis.HOLIDAY_FORCE = undefined;
+    </script>
+    <script src="holiday.js"></script>
     <script src="script.js"></script>
     <!-- Optional: point this to your deployed serverless API (Vercel/Netlify), e.g., https://your-domain/api/chat -->
     <script>
-      // Use the full function URL including /api/chat
-      window.CHAT_API_URL = "https://portfolio-chat-bot-qskyv0zxu-banuka-rajapakshas-projects.vercel.app/api/chat"; // leave empty to use built-in fallback
+  // Use the full function URL including /api/chat
+  globalThis.CHAT_API_URL = "https://portfolio-chat-bot-qskyv0zxu-banuka-rajapakshas-projects.vercel.app/api/chat"; // leave empty to use built-in fallback
     </script>
     <script src="AIChat.js"></script>
   </body>
